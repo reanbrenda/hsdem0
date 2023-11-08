@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcome');
 
+Route::get('categories', [\App\Http\Controllers\CategoryController::class, 'index'])->name('categories.index');
