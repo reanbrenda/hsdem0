@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamp('published_at')->nullable();
             $table->boolean('is_flagged')->default(false);
 
-            $table->foreignId('user_id');
+            $table->foreignId('author_id');
             $table->foreignId('category_id');
 
             $table->timestamps();

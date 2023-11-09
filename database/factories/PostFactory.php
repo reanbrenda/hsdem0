@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'body' => fake()->paragraphs(3, true),
             'is_flagged' => fake()->boolean(20),
             'published_at' => fake()->optional()->dateTimeBetween('-1 year', 'now'),
-            'user_id' => fake()->numberBetween(1, 10),
+            'author_id' => fake()->numberBetween(1, 10),
             'category_id' => fake()->numberBetween(1, 5),
         ];
     }
