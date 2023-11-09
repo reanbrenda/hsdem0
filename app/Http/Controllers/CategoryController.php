@@ -14,4 +14,13 @@ class CategoryController extends Controller
             'categories' => $categories,
         ]);
     }
+
+    public function show(string $id)
+    {
+        $category = \App\Models\Category::findOrFail($id);
+
+        return view('categories.show', [
+            'category' => $category,
+        ]);
+    }
 }
