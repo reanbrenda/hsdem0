@@ -23,6 +23,10 @@ class AdminCategoryController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required', 'min:5', 'max:20'],
+        ]);
+
         $category = Category::firstOrCreate([
             'name' => $request->name,
         ]);
@@ -52,6 +56,10 @@ class AdminCategoryController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => ['required', 'min:5', 'max:20'],
+        ]);
+
         $category = Category::find($id);
 
         $category->update([
