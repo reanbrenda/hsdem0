@@ -22,15 +22,17 @@ Tooling used for local development:
 - [Tinkerwell](https://tinkerwell.app/) for testing/debugging during development (paid)
 
 ## Installation instructions
-!! To be improved
-
 Clone the repository and install the dependencies:
 
 ```sh
-git clone xxxx
+git clone https://github.com/ndeblauw/hsdemo.git
 composer install
-npm run install
 ```
+(Re)generate the tables and seed with dummy data
+```sh
+php artisan migrate:fresh --seed
+```
+
 
 ## Contributing
 Any pull request from a student that improves this code is welcomed.
