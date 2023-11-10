@@ -13,9 +13,9 @@ class SiteLayoutNavbar extends Component
     public function __construct()
     {
         $this->menu_items = [
-            ['label' => 'Welcome', 'route' => 'welcome', 'url' => null,],
-            ['label' => 'Posts', 'route' => 'posts.index', 'url' => null,],
-            ['label' => 'Categories', 'route' => 'categories.index', 'url' => null,],
+            ['label' => 'Welcome', 'route' => 'welcome', 'url' => null],
+            ['label' => 'Posts', 'route' => 'posts.index', 'url' => null],
+            ['label' => 'Categories', 'route' => 'categories.index', 'url' => null],
             ['label' => 'Authors', 'route' => 'users.index', 'url' => null],
         ];
     }

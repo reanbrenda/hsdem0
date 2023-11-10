@@ -10,7 +10,7 @@ class SiteLayout extends Component
 {
     public string $title;
 
-    public function __construct(string $title = "HSDEMO app")
+    public function __construct(string $title = 'HSDEMO app')
     {
         $this->title = $title;
     }
