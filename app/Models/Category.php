@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     // Model Relationships -----------------------------------------------------
     public function posts()
     {
