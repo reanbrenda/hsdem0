@@ -2,6 +2,9 @@
     <a class="underline" href="{{route('admin.categories.index')}}">Back to the index</a>
 
 
+    <x-crud-success-message/>
+
+
     <p class="font-bold">
         {{$category->name}}
     </p>

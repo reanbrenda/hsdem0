@@ -3,6 +3,8 @@
 
     <hr/><br/>
 
+    <x-crud-success-message/>
+
     <ul>
         @foreach($categories as $category)
             <li>

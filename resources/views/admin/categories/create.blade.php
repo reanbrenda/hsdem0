@@ -6,7 +6,7 @@
 
         @csrf
 
-        <input type="text" name="name" placeholder="Category Name">
+        <x-crud-input-field name="name" label="Category name" placeholder="..."/>
 
         <button type="submit">Create</button>
     </form>
