@@ -28,6 +28,8 @@ Clone the repository and install the dependencies:
 git clone https://github.com/ndeblauw/hsdemo.git
 composer install
 ```
+Create a database and set the credentials in the .env file.
+
 (Re)generate the tables and seed with dummy data
 ```sh
 php artisan migrate:fresh --seed
