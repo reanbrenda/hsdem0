@@ -27,6 +27,8 @@ class AdminCategoryController extends Controller
             'name' => $request->name,
         ]);
 
+        session()->flash('success_notification', "Category '{$category->name}' created.");
+
         return redirect()->route('admin.categories.create');
     }
 
@@ -56,6 +58,8 @@ class AdminCategoryController extends Controller
             'name' => $request->name,
         ]);
 
+        session()->flash('success_notification', "Category '{$category->name}' updated.");
+
         return redirect()->route('admin.categories.show', $category->id);
     }
 
@@ -64,6 +68,8 @@ class AdminCategoryController extends Controller
         $category = Category::find($id);
 
         $category->delete();
+
+        session()->flash('success_notification', "Category '{$category->name}' deleted.");
 
         return redirect()->route('admin.categories.index');
     }
