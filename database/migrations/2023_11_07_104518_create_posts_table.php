@@ -20,7 +20,6 @@ return new class extends Migration
             $table->boolean('is_flagged')->default(false);
 
             $table->foreignId('author_id');
-            $table->foreignId('category_id');
 
             $table->timestamps();
         });

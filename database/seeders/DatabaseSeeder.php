@@ -14,7 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Category::factory(5)->create();
         \App\Models\User::factory(10)->create();
+        $posts = \App\Models\Post::factory(10)->create();
 
-        \App\Models\Post::factory(10)->create();
+        foreach($posts as $post) {
+            $post->categories()->attach([rand(1,5), rand(1,5)]);
+        }
+
     }
 }
