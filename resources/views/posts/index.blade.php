@@ -7,26 +7,25 @@
     <ul class="grid grid-cols-2 gap-4">
     @foreach($posts as $post)
 
-        <li class="block p-2 shadow-sm bg-white rounded-lg">
-            <a href="{{route('posts.show', ['post' => $post])}}">
+        <li class="block p-2 shadow-sm bg-white hover:shadow-lg rounded-lg">
 
+            <div class="flex gap-x-2 mb-2">
                 @foreach($post->categories as $category)
-                    <a href="{{route('categories.show', ['id' => $category->id])}}" class="bg-teal-500 mb-4 text-white rounded-full py-1 px-4 text-sm">
+                    <a href="{{route('categories.show', ['id' => $category->id])}}" class="bg-teal-500 hover:bg-teal-600 text-white rounded-full py-1 px-4 text-xs">
                         {{$category->name}}
                     </a>
                 @endforeach
-
-                    <a href="{{route('posts.show', ['post' => $post])}}">LINK TO POST DETAILS</a>
-
-
-                    <h2 class="font-bold text-lg" >{{$post->title}}</h2>
-            <div>{{$post->author?->name ?? 'UNKNOWN AUTHOR' }}</div>
-            <div>{{$post->published_at}}</div>
-
-            <div>
-                {{ Str::limit($post->body, 200) }}
             </div>
 
+            <a href="{{route('posts.show', ['post' => $post])}}" class="">
+                <h2 class="font-bold text-lg" >{{$post->title}}</h2>
+                <span class="">{{$post->author?->name ?? 'UNKNOWN AUTHOR' }}</span>
+                <span class="text-teal-500 mx-1">|</span>
+                <span>{{$post->published_at->format('Y-m-d H:i')}}</span>
+
+                <div class="px-1 pt-2">
+                    {{ Str::limit($post->body, 200) }}
+                </div>
             </a>
         </li>
     @endforeach

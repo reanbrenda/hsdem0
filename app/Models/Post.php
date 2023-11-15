@@ -10,6 +10,10 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     // Model events -----------------------------------------------------------
     protected static function booted()
     {
