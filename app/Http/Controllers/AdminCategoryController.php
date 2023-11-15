@@ -36,31 +36,25 @@ class AdminCategoryController extends Controller
         return redirect()->route('admin.categories.create');
     }
 
-    public function show(string $id)
+    public function show(Category $category)
     {
-        $category = Category::find($id);
-
         return view('admin.categories.show', [
             'category' => $category,
         ]);
     }
 
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        $category = Category::find($id);
-
         return view('admin.categories.edit', [
             'category' => $category,
         ]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
         $request->validate([
             'name' => ['required', 'min:5', 'max:20'],
         ]);
-
-        $category = Category::find($id);
 
         $category->update([
             'name' => $request->name,
@@ -71,10 +65,8 @@ class AdminCategoryController extends Controller
         return redirect()->route('admin.categories.show', $category->id);
     }
 
-   public function destroy(string $id)
+   public function destroy(Category $category)
     {
-        $category = Category::find($id);
-
         $category->delete();
 
         session()->flash('success_notification', "Category '{$category->name}' deleted.");

@@ -19,11 +19,9 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::where('id', $id)->firstOrFail();
-
-        /*
+         /*
         if($post->published_at === null) {
             abort(403, 'This post is not published yet.');
         }*/
