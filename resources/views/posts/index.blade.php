@@ -9,6 +9,8 @@
 
         <li class="block p-2 shadow-sm bg-white hover:shadow-lg rounded-lg">
 
+            <img src="{{$post->media->first()->getUrl('preview')}}">
+
             <div class="flex gap-x-2 mb-2">
                 @foreach($post->categories as $category)
                     <a href="{{route('categories.show', ['id' => $category->id])}}" class="bg-teal-500 hover:bg-teal-600 text-white rounded-full py-1 px-4 text-xs">

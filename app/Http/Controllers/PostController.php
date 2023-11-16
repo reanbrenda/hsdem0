@@ -9,7 +9,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::query()
-            ->with(['author', 'categories'])
+            ->with(['author', 'categories', 'media'])
             ->whereNotNull('published_at')
             ->orderBy('published_at', 'desc')
             ->paginate(6);
