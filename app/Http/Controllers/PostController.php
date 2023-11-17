@@ -15,7 +15,7 @@ class PostController extends Controller
             ->orderBy('published_at', 'desc')
             ->paginate(6);
 
-        return view('posts.index', [
+        return view('site.posts.index', [
             'posts' => $posts,
         ]);
     }
@@ -27,7 +27,7 @@ class PostController extends Controller
             abort(403, 'This post is not published yet.');
         }*/
 
-        return view('posts.show', [
+        return view('site.posts.show', [
             'post' => $post,
         ]);
     }
