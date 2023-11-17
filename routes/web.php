@@ -12,7 +12,7 @@ Route::get('users/{id}', [\App\Http\Controllers\UserController::class, 'show'])-
 Route::get('categories', [\App\Http\Controllers\CategoryController::class, 'index'])->name('categories.index');
 Route::get('categories/{id}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('categories.show');
 
-Route::resource('posts', \App\Http\Controllers\PostController::class);
+
 
 require __DIR__.'/auth.php';
 
@@ -20,6 +20,10 @@ require __DIR__.'/auth.php';
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('home')->name('home.')->middleware('auth')->group(function () {
+    Route::resource('posts', \App\Http\Controllers\Home\PostController::class);
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
