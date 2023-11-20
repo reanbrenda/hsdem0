@@ -29,14 +29,6 @@ class Post extends Model implements HasMedia
         });
     }
 
-    // Model attributes --------------------------------------------------------
-    public function getImageUrl($conversion)
-    {
-        return ($this->media->isNotEmpty())
-            ? $this->media->first()->getUrl($conversion)
-            : '/media/default/conversions/default-'.$conversion.'.jpg';
-    }
-
     // Model Relationships -----------------------------------------------------
     public function author()
     {
@@ -48,10 +40,24 @@ class Post extends Model implements HasMedia
         return $this->belongsToMany(Category::class);
     }
 
+    // Model attributes --------------------------------------------------------
+    public function getThumbnailUrlAttribute()
+    {
+        return $this->getImageUrl('thumbnail');
+    }
+
     // Model scopes -----------------------------------------------------------------
     public function scopeIsPublished($query)
     {
         return $query->whereNotNull('published_at');
+    }
+
+    // Model method ------------------------------------------------------------------
+    public function getImageUrl($conversion)
+    {
+        return ($this->media->isNotEmpty())
+            ? $this->media->first()->getUrl($conversion)
+            : '/media/default/conversions/default-'.$conversion.'.jpg';
     }
 
     // Medialibrary settings ----------------------------------------------------------
