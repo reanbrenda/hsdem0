@@ -19,6 +19,7 @@ class Post extends Model implements HasMedia
 
     protected $casts = [
         'published_at' => 'datetime',
+        'is_featured' => 'boolean',
     ];
 
     // Model events -----------------------------------------------------------
@@ -44,6 +45,24 @@ class Post extends Model implements HasMedia
     public function getThumbnailUrlAttribute()
     {
         return $this->getImageUrl('thumbnail');
+    }
+
+    public function getIsOldAttribute()
+    {
+        if($this->published_at === null) {
+            return false;
+        }
+
+        return $this->published_at->lt(now()->subMonths(2));
+    }
+
+    public function getTimeSincePublishedAttribute()
+    {
+        if($this->is_old) {
+            return 'very old post';
+        }
+
+        return $this->published_at->diffForHumans();
     }
 
     // Model scopes -----------------------------------------------------------------
