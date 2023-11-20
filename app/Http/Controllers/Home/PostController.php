@@ -38,7 +38,9 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('home.posts.create');
+        $categories = \App\Models\Category::orderBy('name')->pluck('name', 'id');
+
+        return view('home.posts.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -46,6 +48,7 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'min:5', 'max:20'],
             'body' => ['required', 'min:5', 'max:2000'],
+            'categories' => ['nullable', 'array'],
             'image' => ['file'],
         ]);
 
@@ -55,6 +58,18 @@ class PostController extends Controller
             'published_at' => null,
             'author_id' => auth()->id(),
         ]);
+
+        $post->categories()->attach($request->categories);
+
+        /* alternative use case: have free text input instead of structured:
+        $category_list = str($request->categories)->replace(' ', '')->explode(',');
+        foreach($category_list as $category_name) {
+            $category = \App\Models\Category::firstOrCreate(
+                ['name' => $category_name]
+            );
+            $post->categories()->attach($category);
+        }
+        */
 
         if($request->hasFile('image')) {
             $post->addMediaFromRequest('image')->toMediaCollection();

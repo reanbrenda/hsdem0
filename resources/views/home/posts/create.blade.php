@@ -6,6 +6,28 @@
 
         <x-crud-input-field name="title" label="Title" placeholder="..."/>
 
+
+
+        <br/>
+
+        <fieldset>
+            <legend>Choose categories:</legend>
+
+            @foreach($categories as $id => $label)
+                <div>
+                    <label for="category-{{$id}}">
+                        <input id="category-{{$id}}" type="checkbox" name="categories[]" value="{{$id}}" />
+                        {{$label}}
+                    </label>
+                </div>
+            @endforeach
+
+        </fieldset>
+
+        {{-- alternative use case: have free text input instead of structured:
+        <x-crud-input-field name="categories" label="Categories" placeholder="add your categories, separate with a comma"/>
+        --}}
+
         <br/>
 
         <x-crud-textarea name="body" label="Your post" placeholder="Just start typing" />
