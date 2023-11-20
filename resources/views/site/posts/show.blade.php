@@ -15,5 +15,5 @@
         written by: <a class="underline" href="{{route('users.show', ['id' => $post->author->id])}}">{{$post->author->name}}</a>
     </div>
     {{$post->published_at}}
-    {{$post->body}}
+    {!! $post->body !!}
 </x-site-layout>

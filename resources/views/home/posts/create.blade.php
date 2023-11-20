@@ -30,7 +30,7 @@
 
         <br/>
 
-        <x-crud-textarea name="body" label="Your post" placeholder="Just start typing" />
+        <x-crud-rich-text-editor name="body" label="Your post" placeholder="Just start typing" />
 
         <br/>
         <label for="file">File</label>
