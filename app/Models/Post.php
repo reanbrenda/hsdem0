@@ -26,7 +26,7 @@ class Post extends Model implements HasMedia
     protected static function booted()
     {
         static::creating(function ($post) {
-            $post->slug = $post->slug ?? Str::slug($post->title);
+            $post->slug = $post->slug ?? $post->createUniqueSlug();
         });
     }
 
@@ -77,6 +77,19 @@ class Post extends Model implements HasMedia
         return ($this->media->isNotEmpty())
             ? $this->media->first()->getUrl($conversion)
             : '/media/default/conversions/default-'.$conversion.'.jpg';
+    }
+
+    public function createUniqueSlug()
+    {
+        $nr = 0;
+        do {
+            $slug = ($nr === 0)
+                ? Str::slug($this->title)
+                : Str::slug($this->title).'-'.$nr;
+            $nr++;
+        } while (Post::where('slug', $slug)->where('id', '<>', $this->id)->count() > 0);
+
+        return $slug;
     }
 
     // Medialibrary settings ----------------------------------------------------------
