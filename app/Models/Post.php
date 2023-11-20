@@ -48,6 +48,12 @@ class Post extends Model implements HasMedia
         return $this->belongsToMany(Category::class);
     }
 
+    // Model scopes -----------------------------------------------------------------
+    public function scopeIsPublished($query)
+    {
+        return $query->whereNotNull('published_at');
+    }
+
     // Medialibrary settings ----------------------------------------------------------
     public function registerMediaConversions(Media $media = null): void
     {

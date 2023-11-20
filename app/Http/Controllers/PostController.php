@@ -11,7 +11,7 @@ class PostController extends Controller
     {
         $posts = Post::query()
             ->with(['author', 'categories', 'media'])
-            ->whereNotNull('published_at')
+            ->isPublished()
             ->orderBy('published_at', 'desc')
             ->paginate(6);
 
