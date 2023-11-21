@@ -14,8 +14,8 @@ class WelcomeController extends Controller
             return Post::with(['media', 'categories', 'author'])->orderBy('published_at', 'desc')->take(4)->get();
         });
 
-        $authors = Cache::remember('welcome.authors', 3600, function() {
-            return User::all();
+        $authors = Cache::remember('welcome.authors', config('app.cache_ttl'), function() {
+            return User::select(['name'])->with('posts')->get();
         });
 
         return view('welcome', compact('recent_news', 'authors'));
