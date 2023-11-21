@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -29,6 +30,10 @@ class Post extends Model implements HasMedia
     {
         static::creating(function ($post) {
             $post->slug = $post->slug ?? $post->createUniqueSlug();
+        });
+
+        static::updated(function($post) {
+            Cache::forget('welcome.recent_news');
         });
     }
 
