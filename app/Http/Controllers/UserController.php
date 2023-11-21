@@ -15,10 +15,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function show(string $id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);
-
         return view('site.users.show', [
             'user' => $user,
         ]);
