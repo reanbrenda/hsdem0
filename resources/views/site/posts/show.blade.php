@@ -12,7 +12,7 @@
     @endforeach
 
     <div class="mb-2 font-semibold">
-        written by: <a class="underline" href="{{route('users.show', ['id' => $post->author->id])}}">{{$post->author->name}}</a>
+        written by: <a class="underline" href="{{route('users.show', ['user' => $post->author])}}">{{$post->author->name}}</a>
     </div>
     {{$post->published_at}}
     {!! $post->body !!}
