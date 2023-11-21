@@ -34,6 +34,7 @@ class Post extends Model implements HasMedia
 
         static::updated(function($post) {
             Cache::forget('welcome.recent_news');
+            Cache::forget('featured_news');
         });
     }
 
