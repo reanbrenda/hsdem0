@@ -10,7 +10,7 @@ class WelcomeController extends Controller
 {
     public function welcome()
     {
-        $recent_news = Cache::remember('welcome.recent_news', 3600, function() {
+        $recent_news = Cache::remember('welcome.recent_news', config('app.cache_ttl'), function() {
             return Post::with(['media', 'categories', 'author'])->orderBy('published_at', 'desc')->take(4)->get();
         });
 

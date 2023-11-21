@@ -17,8 +17,8 @@ class FeaturedNews extends Component
 
     public function render(): View|Closure|string
     {
-        $featured_news = Cache::remember('featured_news', 3600, function () {
             return Post::where('is_featured', true)->with('media')->orderBy('published_at', 'desc')->take(4)->get();
+        $featured_news = Cache::remember('featured_news', config('app.cache_ttl'), function () {
         });
 
         return view('components.featured-news', compact('featured_news'));
