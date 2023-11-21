@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -31,23 +33,23 @@ class Post extends Model implements HasMedia
     }
 
     // Model Relationships -----------------------------------------------------
-    public function author()
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
 
     // Model attributes --------------------------------------------------------
-    public function getThumbnailUrlAttribute()
+    public function getThumbnailUrlAttribute(): string
     {
         return $this->getImageUrl('thumbnail');
     }
 
-    public function getIsOldAttribute()
+    public function getIsOldAttribute(): bool
     {
         if($this->published_at === null) {
             return false;
@@ -56,7 +58,7 @@ class Post extends Model implements HasMedia
         return $this->published_at->lt(now()->subMonths(2));
     }
 
-    public function getTimeSincePublishedAttribute()
+    public function getTimeSincePublishedAttribute(): string
     {
         if($this->is_old) {
             return 'very old post';
@@ -72,14 +74,14 @@ class Post extends Model implements HasMedia
     }
 
     // Model method ------------------------------------------------------------------
-    public function getImageUrl($conversion)
+    public function getImageUrl(string $conversion): string
     {
         return ($this->media->isNotEmpty())
             ? $this->media->first()->getUrl($conversion)
             : '/media/default/conversions/default-'.$conversion.'.jpg';
     }
 
-    public function createUniqueSlug()
+    public function createUniqueSlug(): string
     {
         $nr = 0;
         do {
