@@ -15,7 +15,7 @@ class WelcomeController extends Controller
         }
 
         $recent_news = Cache::remember('welcome.recent_news', config('app.cache_ttl'), function() {
-            return Post::with(['media', 'categories', 'author'])->orderBy('published_at', 'desc')->take(4)->get();
+            return Post::isPublished()->with(['media', 'categories', 'author'])->orderBy('published_at', 'desc')->take(4)->get();
         });
 
         $authors = Cache::remember('welcome.authors', config('app.cache_ttl'), function() {
