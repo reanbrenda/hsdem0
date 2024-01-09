@@ -34,6 +34,12 @@ Create a database and set the credentials in the .env file.
 ```sh
 php artisan migrate:fresh --seed
 ```
+Set the application key
+```sh
+php artisan key:generate
+```
+
+Make sure a (local) email testing service is running (e.g. Helo)
 
 
 ## Contributing

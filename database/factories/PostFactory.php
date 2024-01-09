@@ -37,6 +37,7 @@ class PostFactory extends Factory
         });
     }
 
+    /*
     public function configure()
     {
          return $this->afterCreating(function (Post $post) {
@@ -45,7 +46,7 @@ class PostFactory extends Factory
                 ->addMediaFromUrl($url)
                 ->toMediaCollection();
         });
-    }
+    }*/
 
     // Solution from https://laracasts.com/discuss/channels/testing/how-to-disable-factory-callbacks
     public function withoutAfterCreating()
