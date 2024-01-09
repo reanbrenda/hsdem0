@@ -11,7 +11,7 @@
 
                         @foreach($menu_items as $item)
                             @if(request()->routeIs($item['route']))
-                                <a href="{!! $item['url'] ?? route($item['route']) !!}" class="bg-red-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">{{$item['label']}}</a>
+                                <a href="{!! $item['url'] ?? route($item['route']) !!}" class="bg-gray-600 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">{{$item['label']}}</a>
                             @else
                                 <a href="{!! $item['url'] ?? route($item['route']) !!}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{$item['label']}}</a>
                             @endif
