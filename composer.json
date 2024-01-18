@@ -16,6 +16,7 @@
         "league/flysystem-sftp-v3": "^3.0",
         "mailgun/mailgun-php": "^4.0",
         "spatie/laravel-backup": "^8.5",
+        "spatie/laravel-ignition": "^2.4",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-ray": "^1.33",
         "symfony/http-client": "^6.4",
@@ -35,8 +36,7 @@
         "nunomaduro/collision": "^7.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
-        "roave/security-advisories": "dev-latest",
-        "spatie/laravel-ignition": "^2.0"
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
