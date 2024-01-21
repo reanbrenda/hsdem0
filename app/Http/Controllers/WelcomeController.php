@@ -1,6 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Http;
+
+
 
 use App\Models\Post;
 use App\Models\User;
@@ -22,6 +25,31 @@ class WelcomeController extends Controller
             return User::select(['name'])->with('posts')->get();
         });
 
-        return view('welcome', compact('recent_news', 'authors'));
+        $newsdata = $this->getNewsData();
+
+    return view('welcome', compact('recent_news', 'authors','newsdata'));
     }
+
+
+
+
+    private function getNewsData()
+    {
+        try {
+            $newskey = env('NEWS_API_KEY');
+            $newsApiResponse = Http::get('https://newsapi.org/v2/top-headlines?country=us&apiKey=' . $newskey);
+
+            if ($newsApiResponse->successful()) {
+                return $newsApiResponse->json()['articles'];
+            } else {
+                // Handle API error
+                throw new \Exception('API request failed');
+            }
+        } catch (\Exception $e) {
+            // Handle exception, log, or provide default news
+            return [];
+        }
+    }
+
+
 }
