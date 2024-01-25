@@ -1,7 +1,7 @@
 <div class="w-3/3 border border-teal-500 rounded-sm p-4 overflow-hidden">
     <div>
         <form method="get" action="{{ route('welcome') }}" class="mb-4">
-            @csrf
+
             <label for="category">Select Category:</label>
             <select name="category" id="category">
                 <option value="business" {{ request('category') == 'business' ? 'selected' : '' }}>Business</option>

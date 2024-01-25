@@ -35,8 +35,8 @@
         </div>
 
         <div class="w-1/3 border border-teal-500 rounded-sm p-4">
-            {{-- Include the news section --}}
-            @include('news_section')
+            @include('livewire.news-section')
+
         </div>
     </div>
 
