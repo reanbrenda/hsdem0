@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
 // Public routes
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcome');
 Route::get('posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
@@ -37,5 +38,8 @@ Route::middleware('auth')->group(function () {
 Route::name('admin.')->middleware(['auth', 'is.admin'])->group( function() {
     Route::resource('/admin/categories', \App\Http\Controllers\AdminCategoryController::class);
 });
+
+
+
 
 
