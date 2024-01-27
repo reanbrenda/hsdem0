@@ -8,7 +8,8 @@ application.
 It belongs to the course [Modern Web Application 1 - From Idea to MVP](https://harbour.space/computer-science/courses/modern-web-application-1-nico-deblauwe-946) at [Harbour.Space University](https://harbour.space/).
 The lecturer is [Nico Deblauwe](https://bluepundit.eu).
 
-The project is a simple blog where users can create an account, create posts, comment on posts and like posts.
+The project is a simple blog where users can create an account, create posts, comment on posts and like posts and view news and uses News API to show latest headlines
+and aslo has an extrenal API implemented
 
 ## Requirements
 The project is built using the [TALL stack](https://tallstack.dev/), more specifically [Laravel 10](https://laravel.com) for the backend,
@@ -18,8 +19,11 @@ and [Alpine.js](https://alpinejs.dev/) for the frontend.
 Tooling used for local development:
 - [Ray](https://myray.app) for sending debug info to a separate app (paid)
 - [Debugbar](https://github.com/barryvdh/laravel-debugbar) for displaying profiling data (free)
-- [Helo](https://usehelo.com/) for email testing
+- [Mailgun] https://app.mailgun.com. for emails
 - [Tinkerwell](https://tinkerwell.app/) for testing/debugging during development (paid)
+- Flare for error reporting
+- Cloudflare for back up
+  
 
 ## Installation instructions
 Clone the repository and install the dependencies:
@@ -39,16 +43,10 @@ Set the application key
 php artisan key:generate
 ```
 
-Make sure a (local) email testing service is running (e.g. Helo)
 
+## Project currently runs at
 
-## Contributing
-Any pull request from a student that improves this code is welcomed.
-
-## Security Vulnerabilities
-If you discover a security vulnerability, please send an e-mail to Nico Deblauwe via [nico@bluepundit.eu](mailto:nico@bluepundit.eu).
-Security vulnerabilities will be promptly addressed.
-
+   https://mukindia.cloudns.be/
 ## License
 This project can only be used for educational purposes, not limited in time, nor to any institution. There are no rights to use this code for any other purpose. Please reference the orginal repository if you use this code.
 
